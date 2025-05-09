@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://t13k0xa4heke"]
+[gd_scene load_steps=9 format=4 uid="uid://t13k0xa4heke"]
 
 [ext_resource type="Texture2D" uid="uid://bp1d5akhre3ck" path="res://Assets/MiniProject/Background.png" id="1_h0bxw"]
 [ext_resource type="Texture2D" uid="uid://tgwfdm4oawme" path="res://Assets/MiniProject/Tiles/Dirt.png" id="2_pku2k"]
 [ext_resource type="Texture2D" uid="uid://cvcsi8rgphi4f" path="res://Assets/MiniProject/Tiles/Grass.png" id="3_plyyx"]
+[ext_resource type="Texture2D" uid="uid://h5diyi0y0grl" path="res://Assets/MiniProject/Player/Jump.png" id="4_plyyx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_082hm"]
 texture = ExtResource("2_pku2k")
@@ -22,6 +23,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_082hm")
 sources/1 = SubResource("TileSetAtlasSource_02013")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_082hm"]
+size = Vector2(81, 77)
+
 [node name="Project" type="Node"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -32,3 +36,17 @@ texture = ExtResource("1_h0bxw")
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD//woAAAAAAAAAAAAAAAoAAAAAAAAAAAABAAoAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAD//wkAAQAAAAAAAAAAAAkAAQAAAAAAAAABAAkAAQAAAAAAAAACAAkAAQAAAAAAAAADAAkAAQAAAAAAAAAEAAkAAQAAAAAAAAAFAAkAAQAAAAAAAAAGAAkAAQAAAAAAAAAHAAkAAQAAAAAAAAAIAAkAAQAAAAAAAAAJAAkAAQAAAAAAAAAKAAkAAQAAAAAAAAALAAkAAQAAAAAAAAAMAAkAAQAAAAAAAAANAAkAAQAAAAAAAAAOAAkAAQAAAAAAAAAPAAkAAQAAAAAAAAAQAAkAAQAAAAAAAAARAAkAAQAAAAAAAAASAAkAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_8vnfe")
+
+[node name="Player" type="RigidBody2D" parent="."]
+position = Vector2(576, 393)
+gravity_scale = 2.0
+contact_monitor = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("4_plyyx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-0.5, 9.5)
+shape = SubResource("RectangleShape2D_082hm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]

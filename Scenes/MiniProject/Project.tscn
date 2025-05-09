@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://t13k0xa4heke"]
+
+[ext_resource type="Texture2D" uid="uid://bp1d5akhre3ck" path="res://Assets/MiniProject/Background.png" id="1_h0bxw"]
+
+[node name="Project" type="Node"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(1.145, 1.145)
+texture = ExtResource("1_h0bxw")

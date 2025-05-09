@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://t13k0xa4heke"]
+[gd_scene load_steps=14 format=4 uid="uid://t13k0xa4heke"]
 
 [ext_resource type="Texture2D" uid="uid://bp1d5akhre3ck" path="res://Assets/MiniProject/Background.png" id="1_h0bxw"]
 [ext_resource type="Texture2D" uid="uid://tgwfdm4oawme" path="res://Assets/MiniProject/Tiles/Dirt.png" id="2_pku2k"]
 [ext_resource type="Texture2D" uid="uid://cvcsi8rgphi4f" path="res://Assets/MiniProject/Tiles/Grass.png" id="3_plyyx"]
 [ext_resource type="Texture2D" uid="uid://h5diyi0y0grl" path="res://Assets/MiniProject/Player/Jump.png" id="4_plyyx"]
+[ext_resource type="Texture2D" uid="uid://c0qdpxgnkvmw" path="res://Assets/MiniProject/Player/Idle.png" id="5_082hm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_082hm"]
 texture = ExtResource("2_pku2k")
@@ -25,6 +26,84 @@ sources/1 = SubResource("TileSetAtlasSource_02013")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_082hm"]
 size = Vector2(81, 77)
+
+[sub_resource type="Animation" id="Animation_02013"]
+resource_name = "Idle"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_082hm")]
+}
+
+[sub_resource type="Animation" id="Animation_8vnfe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_plyyx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3gehn"]
+resource_name = "Jump"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_plyyx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ifdk3"]
+_data = {
+&"Idle": SubResource("Animation_02013"),
+&"Jump": SubResource("Animation_3gehn"),
+&"RESET": SubResource("Animation_8vnfe")
+}
 
 [node name="Project" type="Node"]
 
@@ -50,3 +129,7 @@ position = Vector2(-0.5, 9.5)
 shape = SubResource("RectangleShape2D_082hm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+&"": SubResource("AnimationLibrary_ifdk3")
+}
+speed_scale = 8.0

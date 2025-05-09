@@ -12,8 +12,8 @@ config_version=5
 
 config/name="Master Animations Zenva Course"
 run/main_scene="uid://c1041xmqcqo53"
-config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
+config/icon="uid://chggusabfjoqy"
 
 [display]
 

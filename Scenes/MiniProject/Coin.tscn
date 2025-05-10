@@ -137,10 +137,11 @@ _data = {
 &"Spawn": SubResource("Animation_2v1fr")
 }
 
-[node name="Coin" type="Area2D" node_paths=PackedStringArray("coin")]
+[node name="Coin" type="Area2D" node_paths=PackedStringArray("coin", "animPlayer")]
 script = ExtResource("1_f6cgw")
 coins = Array[Texture2D]([ExtResource("1_2v1fr"), ExtResource("3_cch15"), ExtResource("4_3m2s5"), ExtResource("5_q7yll")])
 coin = NodePath("Sprite2D")
+animPlayer = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.8, 0.8)

@@ -14,10 +14,11 @@ Notes:
 The course is pretty simple, but you should be comfortable with GODOT.
 
 Some elements that are covered include:
-    AnimationPlayer - property, method calling, etc
-    Event Handling - keypress detection in code
-    Animation playing in code
-    Particles
+
+- AnimationPlayer - property, method calling, etc
+- Event Handling - keypress detection in code
+- Animation playing in code
+- Particles
 
 If you intend to use C# you will need some experience with GODOT and its C# API.
 

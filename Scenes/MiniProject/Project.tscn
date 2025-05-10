@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://t13k0xa4heke"]
+[gd_scene load_steps=20 format=4 uid="uid://t13k0xa4heke"]
 
 [ext_resource type="Script" uid="uid://bmdp6p52eig2w" path="res://Scripts/MiniProject/Project.cs" id="1_3gehn"]
 [ext_resource type="Texture2D" uid="uid://bp1d5akhre3ck" path="res://Assets/MiniProject/Background.png" id="1_h0bxw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bun3jv1uk85jf" path="res://Scripts/MiniProject/Player.cs" id="4_02013"]
 [ext_resource type="Texture2D" uid="uid://h5diyi0y0grl" path="res://Assets/MiniProject/Player/Jump.png" id="4_plyyx"]
 [ext_resource type="Texture2D" uid="uid://c0qdpxgnkvmw" path="res://Assets/MiniProject/Player/Idle.png" id="5_082hm"]
+[ext_resource type="Script" uid="uid://cw2ww8uo6au3" path="res://Scripts/MiniProject/CoinCollectedParticles.cs" id="9_ifdk3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_082hm"]
 texture = ExtResource("2_pku2k")
@@ -172,6 +173,14 @@ _data = {
 &"RESET": SubResource("Animation_8vnfe")
 }
 
+[sub_resource type="Curve" id="Curve_m8t5f"]
+_data = [Vector2(0.0120301, 0.986705), 0.0, 0.0, 0, 0, Vector2(0.980451, 0.0452235), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_n2t20"]
+offsets = PackedFloat32Array(0.0015949, 1)
+colors = PackedColorArray(0.985281, 0.985281, 0.985281, 1, 1, 1, 1, 0.0117647)
+
 [node name="Project" type="Node"]
 script = ExtResource("1_3gehn")
 coin = ExtResource("2_ifdk3")
@@ -206,5 +215,23 @@ libraries = {
 &"": SubResource("AnimationLibrary_ifdk3")
 }
 speed_scale = 8.0
+
+[node name="CoinCollectedParticles" type="CPUParticles2D" parent="."]
+position = Vector2(576, 248)
+emitting = false
+amount = 30
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.5
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 75.0
+initial_velocity_max = 100.0
+scale_amount_min = 20.0
+scale_amount_max = 25.0
+scale_amount_curve = SubResource("Curve_m8t5f")
+color_ramp = SubResource("Gradient_n2t20")
+script = ExtResource("9_ifdk3")
 
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]

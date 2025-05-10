@@ -7,6 +7,7 @@ public partial class Coin : Area2D
     [Export] public Texture2D[] coins;
     [Export] public Sprite2D coin;
     [Export] public AnimationPlayer animPlayer;
+    [Export] public Color[] colors;
 
     private int spriteIndex;
 
@@ -23,6 +24,8 @@ public partial class Coin : Area2D
         //GD.Print($"Coin::HandleBodyEntered:body.Name = {body.Name}");
         if (body.Name == "Player") {
             animPlayer.Play("CollidedWithPlayer");
+            CoinCollectedParticles coinParticles = (CoinCollectedParticles)GetParent().GetNode("CoinCollectedParticles");
+            coinParticles.Emit(colors[spriteIndex]);
         }
     }
 }

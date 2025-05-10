@@ -142,6 +142,7 @@ script = ExtResource("1_f6cgw")
 coins = Array[Texture2D]([ExtResource("1_2v1fr"), ExtResource("3_cch15"), ExtResource("4_3m2s5"), ExtResource("5_q7yll")])
 coin = NodePath("Sprite2D")
 animPlayer = NodePath("AnimationPlayer")
+colors = PackedColorArray(0.254902, 0.623529, 0.866667, 1, 1, 0.8, 0, 1, 0.180392, 0.8, 0.443137, 1, 0.921569, 0.419608, 0.0901961, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.8, 0.8)

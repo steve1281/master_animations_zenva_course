@@ -72,6 +72,18 @@ tracks/2/keys = {
 "method": &"SpawnNewCoin"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../LandedParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_3gehn"]
 resource_name = "Jump"
@@ -165,6 +177,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../LandedParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ifdk3"]
 _data = {
@@ -233,5 +257,24 @@ scale_amount_max = 25.0
 scale_amount_curve = SubResource("Curve_m8t5f")
 color_ramp = SubResource("Gradient_n2t20")
 script = ExtResource("9_ifdk3")
+
+[node name="LandedParticles" type="CPUParticles2D" parent="."]
+position = Vector2(571, 580)
+emitting = false
+amount = 10
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(20, 1)
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 75.0
+initial_velocity_max = 100.0
+scale_amount_min = 10.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_m8t5f")
+color = Color(0.733333, 0.501961, 0.266667, 1)
+color_ramp = SubResource("Gradient_n2t20")
 
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
